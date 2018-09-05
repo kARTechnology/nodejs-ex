@@ -38,7 +38,7 @@ angular.module('starter.controllers').controller('DashCtrl', function($http, $sc
   });
   // == == == == == == == == == == == == == == == == == == == == == == == ==
   loadDevices = function() {
-    $http.get('http://192.168.1.100:3000/users/getdevices/', {}).success(function(docs) {
+    $http.get('http://localhost:8080/users/getdevices/', {}).success(function(docs) {
       $scope.currentDevice = docs[0].deviceids[0].id;
       $scope.devices = {
         dataSource: docs[0].deviceids,
@@ -66,7 +66,7 @@ angular.module('starter.controllers').controller('DashCtrl', function($http, $sc
       configs: []
     };
     console.log($scope.currentDevice, $scope.fromdate, $scope.todate);
-    $http.get("http://192.168.1.100:3000/users/getlogs", {
+    $http.get("http://localhost:8080/users/getlogs", {
       method: "GET",
       params: {
         deviceid: $scope.currentDevice,

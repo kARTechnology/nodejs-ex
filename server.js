@@ -18,31 +18,34 @@ app.all('/*', function(req, res, next) {
 var ValidatorConfig = require('./ValidatorConfig.js')(app);
 app.use('/', express.static('www'));
 
+mongourl="mongodb://karthikx10:karthikx10@ds237192.mlab.com:37192/devicelogs";
+console.log('hi:');
 
 //-------------------------------------------------
 var mosca = require('mosca');
 var moscaSettings = {
   port: 1883,
+  host: process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
   backend: {
     //using ascoltatore
     type: 'mongo',
-    url: 'mongodb://localhost:27017/mqtt',
+    url: mongourl,
     pubsubCollection: 'ascoltatori',
     mongo: {}
   },
   persistence: {
     factory: mosca.persistence.Mongo,
-    url: 'mongodb://localhost:27017/mqtt'
+    url: mongourl
   }
 };
 //-------------------------------------------------
 var MongoClient = require('mongodb').MongoClient;
 var db;
-MongoClient.connect("mongodb://localhost:27017", {
+MongoClient.connect(mongourl, {
   useNewUrlParser: true
 }, function(err, database) {
   if (err) {
-    console.log('Unable to connect to the mongoDB server. Error:', err);
+     console.log('Unable to connect to the mongoDB server. Error:', err); return
   }
   console.log('connected');
   var server = new mosca.Server(moscaSettings);

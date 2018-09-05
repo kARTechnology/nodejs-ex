@@ -1,7 +1,7 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova', 'dx'])
   .constant('config', {
-    client: 'localhost:3000',
-    base: 'http://192.168.1.100:3000',
+    client: 'http://localhost:8080',
+    base: 'http://localhost:8080',
     // client: 'http://localhost:8000',
     // base: 'http://localhost:8000',
     ver: '?3'
