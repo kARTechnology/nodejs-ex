@@ -1,0 +1,22 @@
+<ion-view view-title="Token Management">
+  <ion-modal-view>
+
+    <ion-header-bar>
+      <h1 class="title">Token Management</h1>
+    </ion-header-bar>
+    <ion-content>
+
+      <div class="list">
+        <label class="item item-input">
+        <span class="input-label">Token</span>
+        <input type="text" ng-model="token" readonly>
+      </label>
+
+        <button class="button button-full button-assertive" ng-click="genNewToken()">
+        Disgard current token and generate new Token
+      </button>
+      </div>
+    </ion-content>
+
+  </ion-modal-view>
+</ion-view>

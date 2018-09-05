@@ -1,0 +1,44 @@
+<ion-view view-title="Dashboard">
+  <ion-nav-title>
+    <span class="title">
+      <i class="icon ion-home"></i>
+      Dashboard
+    </span>
+  </ion-nav-title>
+
+  <ion-content overflow-scroll="true">
+    <!-- <ion-refresher pulling-text="Pull to refresh..." on-refresh="loadData(currentDevice)"></ion-refresher> -->
+    <div class="container">
+      <div class="row responsive-sm">
+        <div class="col">
+          <label class="item item-input">
+            <span class="input-label">From</span>
+            <div dx-date-box="dateBox.morning"></div>
+          </label>
+        </div>
+        <div class="col">
+          <label class="item item-input">
+            <span class="input-label">To</span>
+            <div dx-date-box="dateBox.now"></div>
+          </label>
+        </div>
+        <div class="col">
+          <label class="item item-input">
+            <span class="input-label">Device</span>
+            <div dx-select-box="devices"></div>
+          </label>
+        </div>
+        <div class="col">
+          <button class="button  icon-right ion-chevron-right  button-positive" ng-click="loadData(currentDevice)">
+            View
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="col" ng-repeat="config in charts.configs"> -->
+    <div dx-chart="charts.configs[0]"  style="    height:80vh;"></div>
+
+  </ion-content>
+
+</ion-view>
